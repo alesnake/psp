@@ -1,3 +1,5 @@
+package juegoPañuelo;
+
 import java.util.concurrent.Semaphore;
 import java.security.SecureRandom;
 import java.util.Scanner;
@@ -62,60 +64,55 @@ public class juegoPañuelo {
 		try {
 			
 			semaforo.acquire();
-			Thread.sleep(1000);
 			j.setNumCogido(j.getNumCogido()+1);
 			System.out.println("Jugador: "+j.getIdentificador()+" recogio el pañuelo a las: "+System.currentTimeMillis()+" "
 					+ "numero de veces cogido: "+j.getNumCogido());
-			
-			
-			
-			semaforo.release();
 			
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public void juego() {
-		Scanner sc=new Scanner(System.in);
-		String respuesta="";
-		
-		jugadores j1=new jugadores(1,0);
-		jugadores j2=new jugadores(2,0);
-		
-		SecureRandom sr = new SecureRandom();
-		
-		do {
-			j1=new jugadores(1,j1.getNumCogido());
-			j2=new jugadores(2,j2.getNumCogido());
-			
-			System.out.println("Pulsa s para comenzar el programa, f para salir");
-			respuesta=sc.next();
-			
-			if(respuesta.equalsIgnoreCase("s")) {
-				try {
-					
-					//Thread.sleep(sr.nextInt(2000));
-					
-					j1.start();
-					j2.start();
-				
-					Thread.sleep(sr.nextInt(2000));
-					
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-				
-			}
-		} while(!respuesta.equalsIgnoreCase("f")&&j1.getNumCogido()!=5&&j2.getNumCogido()!=5);
-		
-		System.out.println("GAME OVER");
-		sc.close();
-		
+	public void juego(jugadores j1,jugadores j2) {
+		try {
+			Thread.sleep(1000);
+			j1.start();
+			j2.start();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public static void main(String[]args) {
-		juegoPañuelo jp=new juegoPañuelo(1);
-		jp.juego();
+		try {
+			int victoriasJ1=0;
+			int victoriasJ2=0;
+			
+			Scanner sc=new Scanner(System.in);
+			String respuesta="";
+			do {
+				juegoPañuelo jp=new juegoPañuelo(1);
+				jugadores j1=jp.new jugadores(1,victoriasJ1);
+				jugadores j2=jp.new jugadores(2, victoriasJ2);
+				
+				System.out.println("Pulsa S para iniciar y F para finalizar");
+				respuesta=sc.next();
+				
+				if(respuesta.equalsIgnoreCase("s")) {
+					jp.juego(j1,j2);
+				}else if(respuesta.equalsIgnoreCase("f")) {
+					System.out.println("Hasta luego");
+				}
+				
+					Thread.sleep(1000);
+				
+				victoriasJ1=j1.getNumCogido();
+				victoriasJ2=j2.getNumCogido();
+			}while(!respuesta.equalsIgnoreCase("f")&&victoriasJ1!=5&&victoriasJ2!=5);
+			System.out.println("GAME OVER");
+			sc.close();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 }
