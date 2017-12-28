@@ -1,0 +1,40 @@
+Para la realización de los ejercicios, se utilizará un único fichero fuente para cada ejercicio.
+Se subirán a la plataforma denominándolos NombreApellido1Ejercicio1.java y NombreApellido2Ejercicio2.java y estos serán los nómbres de la clase principal de cada ejercicio. (Sustituye Nombre por tu nombre, Apellido1 por tu primer apellido y Apellido2 por tu segundo apellido)
+El profesor comprobará su funcionamiento antes de ser entregado por el alumno y propondrá una pequeña modificación para su defensa.
+
+
+
+
+
+
+
+EJERCICIO 1.
+Hacer un programa que simule el juego del pañuelo modificado.
+Consiste en dos jugadores que compiten por coger un pañuelo a la vez.
+El juez que sujeta el pañuelo da la orden para que salgan de sus puestos los jugadores.
+El primer jugador que coge el pañuelo gana el turno.
+El primer jugador que gane 5 turnos gana el juego.
+Para la simulación, se utilizarán dos hilos que imprimirán por pantalla un identificador de hilo(Compuesto por tu nombre y un numero de orden: ejemplo DAVID1), el número de veces que lleva cogido el pañuelo y la hora a la que ese hilo ha cogido el pañuelo.
+Cuando uno de los hilos llegue a coger 5 veces el pañuelo, imprimirá además un mensaje "GAME OVER" y finalizará el programa.
+Para que ambos hilos tengan igualdad de oportunidades y para simular la capacidad de reacción de un hilo sobre el otro, se generará aleatoriamente en cada turno un tiempo de espera diferente a cada hilo de no mas de 2 segundos.
+Para simular la señal del juez que inicia el turno, el programa esperará la pulsación de una tecla.
+Si se pulsa la tecla F se finalizará prematuramente el juego.
+----------------------------------------------------------------------------
+Se valorará en este orden la implementación correcta de semáforos (2 puntos), la correcta ejecución del programa (1 punto), el orden y claridad de la estructura del programa (0,5 puntos), la documentación interna del programa (0,5 puntos) y la escritura simultánea del resultado en un fichero (1 punto).
+
+
+
+
+
+
+EJERCICIO 2.
+Hacer un programa que simule la atención de clientes en una gasolinera en la que hay dos surtidores.
+La gasolinera tarda en llenar el depósito a cada cliente 10 segundos.
+Cada minuto llegan nuevos clientes a la gasolinera, pero no se permite el acceso a más de 5 clientes a la vez.
+Se simulará un número finito de oleadas de llegadas de coches, definido al principio del programa.
+Se simulará la llegada de un número aleatorio de coches en cada llegada que no excederá de 5.
+La prioridad de cada coche para acceder a la cola de surtidores, vendrá definida por un tiempo aleatorio de espera.
+Para cada oleada de coches se irá imprimiendo el número de oleada y a medida que se vayan atendiendo, el identificador de cada coche (Compuesto por tu apellido y un numero de orden: ejemplo ALVAREZ1), la hora a la que se ha comenzado a atender y la hora a la que se ha terminado de atender.
+Finalizadas las oleadas, el programa terminará la simulación.
+----------------------------------------------------------------------------
+Se valorará en este orden la implementación correcta de semáforos (2 puntos), la correcta ejecución del programa (1 punto), el orden y claridad de la estructura del programa (0,5 puntos), la documentación interna del programa (0,5 puntos) y la escritura simultánea del resultado en un fichero (1 punto).
